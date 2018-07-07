@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 class TourController extends Controller
 {
     function index($id){
-//        return Tour::find($id);
+        $tour = Tour::find($id);
+        if(empty($tour))
+            abort(404);
+
         return view('tourRegister',[
-            'tour'=>Tour::find($id)
+            'tour'=>$tour
+        ]);
+    }
+
+    function register($id,Request $request){
+        $request->validate([
+           ''
         ]);
     }
 }
