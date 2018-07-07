@@ -47,21 +47,28 @@
                     <img class="telegram" src="images/telegram.png" alt="Telegram">
                 </div>
                 <div class="col-md-8">
-                    <div class="card flex-md-row mb-4">
-                        <img class="card-img-right flex-auto d-none d-lg-block" alt="bali" style="width: 200px; height: 200px;" src="images/1.jpg">
+                    @if(!empty($tours))
+                        <div class="row">
+                            @foreach($tours as $tour)
+                                <div class="col-md-12">
+                                    <div class="card flex-md-row mb-4">
+                                        <img class="card-img-right flex-auto d-none d-lg-block" alt="bali"
+                                             style="width: 200px; height: 200px;" src="{{asset($tour->media)}}">
 
-                        <div class="card-body align-items-end">
-                            <h3 class="mb-2">
-                                <a class="" href="#">تور مسافرتی به جزیره بالی</a>
-                            </h3>
-                            <div class="mb-2">20 تیر 1397</div>
-                            <p class="card-text mb-auto">تور 5 روزه به سواحل بالی در اندونزی به همراه هتل و
-                                دیگر امکانات با تضمین کمترین هزینه</p>
-                            <a href="#">ثبت نام</a>
+                                        <div class="card-body align-items-end">
+                                            <h3 class="mb-2">
+                                                <a class="" href="{{route('tour',$tour->id)}}">{{$tour->title}}</a>
+                                            </h3>
+                                            <div class="mb-2">{{$tour->start_time}}</div>
+                                            <p class="card-text mb-auto">{{$tour->description}}</p>
+                                            <a href="{{route('tour',$tour->id)}}">ثبت نام</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    </div>
+                    @endif
                 </div>
-
             </div>
         </div>
     </main>

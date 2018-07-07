@@ -18,6 +18,6 @@ class Tour extends Model
 
     function members()
     {
-        $this->hasMany('App/TourMember', 'tour_id', 'id');
+        $this->hasMany('App\TourMember', 'tour_id', 'id');
     }
 }
